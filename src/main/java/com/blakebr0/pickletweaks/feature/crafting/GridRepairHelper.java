@@ -31,6 +31,19 @@ public class GridRepairHelper {
 		if (id == null)
 			return false;
 
-		return ModConfigs.GRID_REPAIR_BLACKLIST.get().contains(id.toString());
+		var blacklist = ModConfigs.GRID_REPAIR_BLACKLIST.get();
+
+		return blacklist.stream().anyMatch(s -> {
+			var parts = s.split(":");
+
+			if (parts.length != 2)
+				return false;
+
+			if ("*".equals(parts[1])) {
+				return id.getNamespace().equals(parts[0]);
+			}
+
+			return id.toString().equals(s);
+		});
 	}
 }

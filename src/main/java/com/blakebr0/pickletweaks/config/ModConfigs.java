@@ -158,8 +158,11 @@ public final class ModConfigs {
                 .comment("Makes it so shears need 50% less material to repair.")
                 .define("cheapShears", true);
         GRID_REPAIR_BLACKLIST = common
-                .comment("Tools that should not be repairable in the crafting grid." +
-                        "\nEx: [\"minecraft:stone_pickaxe\", \"minecraft:stone_sword\"]")
+                .comment("""
+                        Tools that should not be repairable in the crafting grid.
+                        Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]
+                        You can also blacklist entire mods by doing <mod-id>:*
+                        Ex. ["pickletweaks:*"]""")
                 .define("blacklist", new ArrayList<>());
         GRID_REPAIR_OVERRIDES = common
                 .comment("""
