@@ -82,6 +82,8 @@ public final class ModConfigs {
                 .comment("""
                         Here you can specify a list of tools that shouldn't have tool info tooltips.
                         Ex. ["minecraft:iron_pickaxe", "minecraft:iron_axe"]
+                        You can use tags for tools by doing tag:<tag-id>.
+                        Ex: ["tag:minecraft:tools"]
                         You can also blacklist entire mods by doing <mod-id>:*
                         Ex. ["pickletweaks:*"]""")
                 .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
@@ -161,6 +163,8 @@ public final class ModConfigs {
                 .comment("""
                         Tools that should not be repairable in the crafting grid.
                         Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]
+                        You can use tags for tools by doing tag:<tag-id>.
+                        Ex: ["tag:minecraft:tools"]
                         You can also blacklist entire mods by doing <mod-id>:*
                         Ex. ["pickletweaks:*"]""")
                 .define("blacklist", new ArrayList<>());
@@ -171,7 +175,7 @@ public final class ModConfigs {
                         You can use tags for materials by doing tag:<tag-id>.
                         Ex: ["minecraft:stone_shovel=tag:forge:ingots/iron"]
                         You can also use tags for tools by doing tag:<tag-id>.
-                        Ex: ["tag:forge/tools=tag:forge:ingots/iron"]
+                        Ex: ["tag:minecraft:tools=tag:forge:ingots/iron"]
                         You can specify how effective the material is by appending @<multiplier>
                         Ex: ["minecraft:stone_shovel=minecraft:stick@0.5"]""")
                 .define("overrides", Lists.newArrayList("minecraft:shears=minecraft:iron_ingot", "pickletweaks:flint_shears=minecraft:flint"));
@@ -185,6 +189,8 @@ public final class ModConfigs {
                 .comment("""
                         Tools and weapons that should be ineffective.
                         Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]
+                        You can use tags for tools by doing tag:<tag-id>.
+                        Ex: ["tag:minecraft:tools"]
                         You can also whitelist entire mods by doing <mod-id>:*
                         Ex. ["pickletweaks:*"]""")
                 .define("uselessTools", new ArrayList<>());

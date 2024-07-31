@@ -1,9 +1,9 @@
 package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.config.ModConfigs;
+import com.blakebr0.pickletweaks.util.BlacklistUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class GridRepairHelper {
 	public static double getMaterialValue(ItemStack tool, ItemStack mat) {
@@ -27,23 +27,6 @@ public class GridRepairHelper {
 	}
 
 	public static boolean isBlacklisted(Item item) {
-		var id = ForgeRegistries.ITEMS.getKey(item);
-		if (id == null)
-			return false;
-
-		var blacklist = ModConfigs.GRID_REPAIR_BLACKLIST.get();
-
-		return blacklist.stream().anyMatch(s -> {
-			var parts = s.split(":");
-
-			if (parts.length != 2)
-				return false;
-
-			if ("*".equals(parts[1])) {
-				return id.getNamespace().equals(parts[0]);
-			}
-
-			return id.toString().equals(s);
-		});
+		return BlacklistUtils.contains(item, ModConfigs.GRID_REPAIR_BLACKLIST.get());
 	}
 }

@@ -4,6 +4,7 @@ import com.blakebr0.cucumber.event.ScytheHarvestCropEvent;
 import com.blakebr0.cucumber.util.Localizable;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
+import com.blakebr0.pickletweaks.util.BlacklistUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
@@ -20,7 +21,6 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public final class TweakToolUselessifier {
 	@SubscribeEvent
@@ -153,29 +153,8 @@ public final class TweakToolUselessifier {
 	}
 
 	public static boolean isUselessTool(Item item) {
-		if (item == null)
-			return false;
-
-		var id = ForgeRegistries.ITEMS.getKey(item);
-		if (id == null)
-			return false;
-
-		var whitelist = ModConfigs.USELESS_TOOLS.get();
-
-		var whitelisted = whitelist.stream().anyMatch(s -> {
-			var parts = s.split(":");
-
-			if (parts.length != 2)
-				return false;
-
-			if ("*".equals(parts[1])) {
-				return id.getNamespace().equals(parts[0]);
-			}
-
-			return id.toString().equals(s);
-		});
-
-		if (!whitelisted)
+		// this is a whitelist, ignore anyone who says otherwise
+		if (!BlacklistUtils.contains(item, ModConfigs.USELESS_TOOLS.get()))
 			return false;
 
         return item instanceof TieredItem || item instanceof ProjectileWeaponItem || item instanceof ShearsItem;

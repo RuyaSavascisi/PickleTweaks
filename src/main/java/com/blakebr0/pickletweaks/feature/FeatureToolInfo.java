@@ -3,11 +3,11 @@ package com.blakebr0.pickletweaks.feature;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
+import com.blakebr0.pickletweaks.util.BlacklistUtils;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public final class FeatureToolInfo {
 	@SubscribeEvent
@@ -44,23 +44,6 @@ public final class FeatureToolInfo {
 	}
 
 	private static boolean isBlacklisted(Item item) {
-		var blacklist = ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get();
-
-		var id = ForgeRegistries.ITEMS.getKey(item);
-		if (id == null)
-			return true;
-
-		return blacklist.stream().anyMatch(s -> {
-			var parts = s.split(":");
-
-			if (parts.length != 2)
-				return false;
-
-			if ("*".equals(parts[1])) {
-				return id.getNamespace().equals(parts[0]);
-			}
-
-			return id.toString().equals(s);
-		});
+		return BlacklistUtils.contains(item, ModConfigs.TOOL_INFO_TOOLTIP_BLACKLIST.get());
 	}
 }
