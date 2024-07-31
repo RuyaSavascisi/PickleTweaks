@@ -87,21 +87,21 @@ public final class ModConfigs {
                 .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
         common.pop();
 
-        common.comment("Disable features.").push("Features");
+        common.comment("Disable specific features.").push("Features");
         ENABLE_COLORED_COBBLESTONE = common
-                .comment("Colored Cobblestone enabled?")
+                .comment("Enable Colored Cobblestone?")
                 .define("coloredCobblestone", true);
         ENABLE_SMOOTH_GLOWSTONE = common
-                .comment("Smooth Glowstone enabled?")
+                .comment("Enable Smooth Glowstone?")
                 .define("smoothGlowstone", true);
         ENABLE_COAL_PIECES = common
-                .comment("Coal and Charcoal Piece enabled?")
+                .comment("Enable Coal and Charcoal Piece?")
                 .define("coalPiece", true);
         ENABLE_APPLES = common
-                .comment("Diamond and Emerald Apples enabled?")
+                .comment("Enable Diamond and Emerald Apples?")
                 .define("apples", true);
         ENABLE_WATERING_CAN = common
-                .comment("Watering Can enabled?")
+                .comment("Enable Watering Can?")
                 .define("wateringCan", true);
         ENABLE_MESHES = common
                 .comment("Enable Meshes?")
