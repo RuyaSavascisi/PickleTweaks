@@ -170,6 +170,8 @@ public final class ModConfigs {
                         Ex: ["minecraft:stone_shovel=minecraft:stick"]
                         You can use tags for materials by doing tag:<tag-id>.
                         Ex: ["minecraft:stone_shovel=tag:forge:ingots/iron"]
+                        You can also use tags for tools by doing tag:<tag-id>.
+                        Ex: ["tag:forge/tools=tag:forge:ingots/iron"]
                         You can specify how effective the material is by appending @<multiplier>
                         Ex: ["minecraft:stone_shovel=minecraft:stick@0.5"]""")
                 .define("overrides", Lists.newArrayList("minecraft:shears=minecraft:iron_ingot", "pickletweaks:flint_shears=minecraft:flint"));
