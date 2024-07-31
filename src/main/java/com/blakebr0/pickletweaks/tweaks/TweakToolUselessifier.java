@@ -160,7 +160,22 @@ public final class TweakToolUselessifier {
 		if (id == null)
 			return false;
 
-		if (!ModConfigs.USELESS_TOOLS.get().contains(id.toString()))
+		var whitelist = ModConfigs.USELESS_TOOLS.get();
+
+		var whitelisted = whitelist.stream().anyMatch(s -> {
+			var parts = s.split(":");
+
+			if (parts.length != 2)
+				return false;
+
+			if ("*".equals(parts[1])) {
+				return id.getNamespace().equals(parts[0]);
+			}
+
+			return id.toString().equals(s);
+		});
+
+		if (!whitelisted)
 			return false;
 
         return item instanceof TieredItem || item instanceof ProjectileWeaponItem || item instanceof ShearsItem;

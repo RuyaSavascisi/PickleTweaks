@@ -81,7 +81,7 @@ public final class ModConfigs {
         TOOL_INFO_TOOLTIP_BLACKLIST = common
                 .comment("""
                         Here you can specify a list of tools that shouldn't have tool info tooltips.
-                        Ex. ["minecraft:iron_pickaxe"]
+                        Ex. ["minecraft:iron_pickaxe", "minecraft:iron_axe"]
                         You can also blacklist entire mods by doing <mod-id>:*
                         Ex. ["pickletweaks:*"]""")
                 .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
@@ -179,7 +179,9 @@ public final class ModConfigs {
         USELESS_TOOLS = common
                 .comment("""
                         Tools and weapons that should be ineffective.
-                        Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]""")
+                        Ex: ["minecraft:stone_pickaxe", "minecraft:stone_sword"]
+                        You can also whitelist entire mods by doing <mod-id>:*
+                        Ex. ["pickletweaks:*"]""")
                 .define("uselessTools", new ArrayList<>());
         common.pop();
 
