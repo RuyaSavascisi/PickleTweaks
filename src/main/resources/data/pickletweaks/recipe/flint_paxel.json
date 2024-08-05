@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:flint_gear"
+    },
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:paxels"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "pickletweaks:flint_axe"
+    },
+    "B": {
+      "item": "pickletweaks:flint_pickaxe"
+    },
+    "C": {
+      "item": "pickletweaks:flint_shovel"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:flint_paxel"
+  }
+}

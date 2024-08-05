@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class EmeraldAppleItem extends BaseItem {
-	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(10).saturationMod(2.0F).alwaysEat().build();
+	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(10).saturationModifier(2.0F).alwaysEdible().build();
 
 	public EmeraldAppleItem() {
 		super(p -> p.food(FOOD).rarity(Rarity.EPIC));
@@ -58,14 +58,14 @@ public class EmeraldAppleItem extends BaseItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_BOOST.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.getDisplayName(), "III").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.getDisplayName(), "IV").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.getDisplayName(), "II").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_BOOST.value().getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.value().getDisplayName(), "III").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.value().getDisplayName(), "IV").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.value().getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.value().getDisplayName(), "II").build());
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}

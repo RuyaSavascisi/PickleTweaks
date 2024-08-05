@@ -30,16 +30,16 @@ public class NightVisionGogglesModel extends HumanoidModel<LivingEntity> {
     }
 
     @Override
-    public void renderToBuffer(PoseStack matrix, VertexConsumer buffer, int light, int overlay, float r, float g, float b, float a) {
+    public void renderToBuffer(PoseStack matrix, VertexConsumer buffer, int light, int overlay, int p_350361_) {
         matrix.pushPose();
 
         this.head.translateAndRotate(matrix);
 
         matrix.scale(0.6F, 0.6F, 0.6F);
 
-        this.main.render(matrix, buffer, light, overlay, r, g, b, a);
-        this.lens.render(matrix, buffer, light, overlay, r, g, b, a);
-        this.frame.render(matrix, buffer, light, overlay, r, g, b, a);
+        this.main.render(matrix, buffer, light, overlay);
+        this.lens.render(matrix, buffer, light, overlay);
+        this.frame.render(matrix, buffer, light, overlay);
 
         matrix.popPose();
     }

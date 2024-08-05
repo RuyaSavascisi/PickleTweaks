@@ -6,8 +6,8 @@ import com.blakebr0.pickletweaks.tweaks.TweakToolUselessifier;
 import com.blakebr0.pickletweaks.util.BlacklistUtils;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public final class FeatureToolInfo {
 	@SubscribeEvent
@@ -30,10 +30,11 @@ public final class FeatureToolInfo {
 	}
 
 	private static String getMiningLevel(DiggerItem item) {
-		var lvl = item.getTier().getLevel();
+//		var lvl = item.getTier().getLevel();
 		var names = ModConfigs.HARVEST_LEVEL_NAMES.get();
 
-		return lvl >= 0 && lvl < names.size() ? names.get(lvl) : String.valueOf(lvl);
+		return ":("; // TODO: 1.21 is this even possible anymore?
+//		return lvl >= 0 && lvl < names.size() ? names.get(lvl) : String.valueOf(lvl);
 	}
 
 	private static float getMiningSpeed(DiggerItem item) {

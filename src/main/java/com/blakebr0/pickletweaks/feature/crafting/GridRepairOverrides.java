@@ -2,12 +2,12 @@ package com.blakebr0.pickletweaks.feature.crafting;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModConfigs;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,31 +119,30 @@ public class GridRepairOverrides {
 
 			if (parts.length == 3) { // tag case
 				if (value.startsWith("tag:")) {
-					var tag = value.substring(4).split("@")[0];
-
-					if (!ResourceLocation.isValidResourceLocation(tag)) {
+					var tag = ResourceLocation.tryParse(value.substring(4).split("@")[0]);
+					if (tag == null) {
 						PickleTweaks.LOGGER.error("Invalid repair material tag: {}", value);
 						return null;
 					}
 
-					return OverrideIngredient.tag(ItemTags.create(new ResourceLocation(tag)));
+					return OverrideIngredient.tag(ItemTags.create(tag));
 				} else {
 					PickleTweaks.LOGGER.error("Invalid repair material prefix (should be 'tag:'): {}", value);
 				}
 			} else if (parts.length == 2) { // item case
-				var id = value.split("@")[0];
-				if (!ResourceLocation.isValidResourceLocation(id)) {
+				var id = ResourceLocation.tryParse(value.split("@")[0]);
+				if (id == null) {
 					PickleTweaks.LOGGER.error("Invalid repair material item: {}", value);
 					return null;
 				}
 
-				var item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(id));
-				if (item == null) {
+				var item = BuiltInRegistries.ITEM.getOptional(id);
+				if (item.isEmpty()) {
 					PickleTweaks.LOGGER.error("Invalid repair material item is null: {}", value);
 					return null;
 				}
 
-				return OverrideIngredient.item(item);
+				return OverrideIngredient.item(item.get());
 			} else {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax: {}", value);
 			}

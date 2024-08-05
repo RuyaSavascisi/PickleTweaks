@@ -1,14 +1,14 @@
 package com.blakebr0.pickletweaks.network;
 
-import com.blakebr0.cucumber.network.BaseNetworkHandler;
-import com.blakebr0.pickletweaks.PickleTweaks;
-import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
-import net.minecraft.resources.ResourceLocation;
+import com.blakebr0.pickletweaks.network.payload.ToggleMagnetPayload;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 
 public class NetworkHandler {
-    public static final BaseNetworkHandler INSTANCE = new BaseNetworkHandler(new ResourceLocation(PickleTweaks.MOD_ID, "main"));
+    @SubscribeEvent
+    public void onRegisterPayloadHandlers(RegisterPayloadHandlersEvent event) {
+        var registrar = event.registrar("1");
 
-    public static void onCommonSetup() {
-        INSTANCE.register(ToggleMagnetMessage.class, new ToggleMagnetMessage());
+        registrar.playToServer(ToggleMagnetPayload.TYPE, ToggleMagnetPayload.STREAM_CODEC, ToggleMagnetPayload::handleServer);
     }
 }

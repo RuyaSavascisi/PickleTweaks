@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:smithing_transform",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:paxels"
+    }
+  ],
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "tag": "pickletweaks:diamond_sickles"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "result": {
+    "id": "pickletweaks:netherite_sickle"
+  }
+}

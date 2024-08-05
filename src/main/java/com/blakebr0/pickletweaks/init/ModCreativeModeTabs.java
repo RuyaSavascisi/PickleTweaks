@@ -1,6 +1,5 @@
 package com.blakebr0.pickletweaks.init;
 
-import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.cucumber.util.FeatureFlagDisplayItemGenerator;
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.config.ModFeatureFlags;
@@ -8,18 +7,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ModCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, PickleTweaks.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = REGISTRY.register("creative_tab", () -> CreativeModeTab.builder()
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = REGISTRY.register("creative_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.pickletweaks"))
             .icon(() -> new ItemStack(ModItems.WATERING_CAN.get()))
             .displayItems(FeatureFlagDisplayItemGenerator.create((parameters, output) -> {
-                var stack = ItemStack.EMPTY;
-
                 output.accept(ModBlocks.WHITE_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);
                 output.accept(ModBlocks.ORANGE_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);
                 output.accept(ModBlocks.MAGENTA_COBBLESTONE, ModFeatureFlags.COLORED_COBBLESTONE);
@@ -43,15 +40,8 @@ public final class ModCreativeModeTabs {
                 output.accept(ModItems.CHARCOAL_PIECE, ModFeatureFlags.COAL_PIECES);
                 output.accept(ModItems.DIAMOND_APPLE, ModFeatureFlags.APPLES);
                 output.accept(ModItems.EMERALD_APPLE, ModFeatureFlags.APPLES);
-
-                stack = new ItemStack(ModItems.WATERING_CAN.get());
-                NBTHelper.setBoolean(stack, "Water", false);
-                output.accept(stack, ModFeatureFlags.WATERING_CANS);
-
-                stack = new ItemStack(ModItems.REINFORCED_WATERING_CAN.get());
-                NBTHelper.setBoolean(stack, "Water", false);
-                output.accept(stack, ModFeatureFlags.WATERING_CANS);
-
+                output.accept(ModItems.WATERING_CAN, ModFeatureFlags.WATERING_CANS);
+                output.accept(ModItems.REINFORCED_WATERING_CAN, ModFeatureFlags.WATERING_CANS);
                 output.accept(ModItems.GRASS_FIBER, ModFeatureFlags.MESHES);
                 output.accept(ModItems.GRASS_FIBER_MESH, ModFeatureFlags.MESHES);
                 output.accept(ModItems.MESH, ModFeatureFlags.MESHES);

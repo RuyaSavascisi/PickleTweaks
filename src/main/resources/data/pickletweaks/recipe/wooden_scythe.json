@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:scythes"
+    }
+  ],
+  "pattern": [
+    "IIS",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "I": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:wooden_scythe"
+  }
+}

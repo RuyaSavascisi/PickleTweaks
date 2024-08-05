@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:paxels"
+    }
+  ],
+  "pattern": [
+    "ABC",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:golden_axe"
+    },
+    "B": {
+      "item": "minecraft:golden_pickaxe"
+    },
+    "C": {
+      "item": "minecraft:golden_shovel"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:golden_paxel"
+  }
+}

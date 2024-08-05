@@ -1,23 +1,23 @@
 package com.blakebr0.pickletweaks.feature.client.handler;
 
-import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
-import com.blakebr0.pickletweaks.network.NetworkHandler;
-import com.blakebr0.pickletweaks.network.message.ToggleMagnetMessage;
+import com.blakebr0.pickletweaks.init.ModDataComponents;
+import com.blakebr0.pickletweaks.network.payload.ToggleMagnetPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraftforge.client.event.ScreenEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public final class ToggleMagnetInInventoryHandler {
     @SubscribeEvent
     public void onMouseClicked(ScreenEvent.MouseButtonPressed.Pre event) {
-        var mc = Minecraft.getInstance();
         var screen = event.getScreen();
 
         if (screen instanceof AbstractContainerScreen<?> container && event.getButton() == 1) {
+            var mc = Minecraft.getInstance();
             var slot = container.getSlotUnderMouse();
             var player = mc.player;
 
@@ -30,9 +30,9 @@ public final class ToggleMagnetInInventoryHandler {
                 var stack = slot.getItem();
 
                 if (stack.getItem() instanceof MagnetItem) {
-                    NetworkHandler.INSTANCE.sendToServer(new ToggleMagnetMessage(slot.index));
+                    PacketDistributor.sendToServer(new ToggleMagnetPayload(slot.index));
 
-                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
+                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false) ? 0.5F : 1.0F);
 
                     event.setCanceled(true);
                 }

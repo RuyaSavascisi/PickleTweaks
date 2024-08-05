@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:night_vision_goggles"
+    }
+  ],
+  "pattern": [
+    "IGI",
+    "S S"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "G": {
+      "item": "minecraft:green_stained_glass_pane"
+    },
+    "S": {
+      "tag": "c:strings"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:night_vision_goggles"
+  }
+}

@@ -1,41 +1,33 @@
 package com.blakebr0.pickletweaks.lib;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.LazyLoadedValue;
+import com.google.common.base.Suppliers;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.TierSortingRegistry;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 
-import java.util.List;
 import java.util.function.Supplier;
 
-import static com.blakebr0.pickletweaks.PickleTweaks.MOD_ID;
-
 public enum ModItemTier implements Tier {
-    FLINT(1, 157, 4.5F, 1.75F, 7, () -> {
-        return Ingredient.of(Items.FLINT);
-    }),
-    EMERALD(3, 1324, 9.0F, 4.0F, 12, () -> {
-        return Ingredient.of(Tags.Items.GEMS_EMERALD);
-    });
+    FLINT(ModTags.INCORRECT_FOR_FLINT_TOOL, 157, 4.5F, 1.75F, 7, () -> Ingredient.of(Items.FLINT)),
+    EMERALD(ModTags.INCORRECT_FOR_EMERALD_TOOL, 1324, 9.0F, 4.0F, 12, () -> Ingredient.of(Tags.Items.GEMS_EMERALD));
 
-    private final int harvestLevel;
+    private final TagKey<Block> incorrectBlocksForDrops;
     private final int maxUses;
     private final float efficiency;
     private final float attackDamage;
     private final int enchantability;
-    private final LazyLoadedValue<Ingredient> repairMaterial;
+    private final Supplier<Ingredient> repairMaterial;
 
-    ModItemTier(int harvestLevel, int maxUses, float efficiency, float attackDamage, int enchantability, Supplier<Ingredient> repairMaterial) {
-        this.harvestLevel = harvestLevel;
+    ModItemTier(TagKey<Block> incorrectBlocksForDrops, int maxUses, float efficiency, float attackDamage, int enchantability, Supplier<Ingredient> repairMaterial) {
+        this.incorrectBlocksForDrops = incorrectBlocksForDrops;
         this.maxUses = maxUses;
         this.efficiency = efficiency;
         this.attackDamage = attackDamage;
         this.enchantability = enchantability;
-        this.repairMaterial = new LazyLoadedValue<>(repairMaterial);
+        this.repairMaterial = Suppliers.memoize(repairMaterial::get);
     }
 
     @Override
@@ -54,8 +46,8 @@ public enum ModItemTier implements Tier {
     }
 
     @Override
-    public int getLevel() {
-        return this.harvestLevel;
+    public TagKey<Block> getIncorrectBlocksForDrops() {
+        return this.incorrectBlocksForDrops;
     }
 
     @Override
@@ -66,10 +58,5 @@ public enum ModItemTier implements Tier {
     @Override
     public Ingredient getRepairIngredient() {
         return this.repairMaterial.get();
-    }
-
-    public static void onCommonSetup() {
-        TierSortingRegistry.registerTier(FLINT, new ResourceLocation(MOD_ID, "flint"), List.of(Tiers.STONE), List.of());
-        TierSortingRegistry.registerTier(EMERALD, new ResourceLocation(MOD_ID, "emerald"), List.of(Tiers.DIAMOND), List.of());
     }
 }

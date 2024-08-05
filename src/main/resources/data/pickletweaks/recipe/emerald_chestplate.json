@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:emerald_gear"
+    }
+  ],
+  "pattern": [
+    "F F",
+    "FFF",
+    "FFF"
+  ],
+  "key": {
+    "F": {
+      "tag": "c:gems/emerald"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:emerald_chestplate"
+  }
+}

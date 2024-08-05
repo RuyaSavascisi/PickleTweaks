@@ -1,8 +1,8 @@
 package com.blakebr0.pickletweaks.feature.item;
 
-import com.blakebr0.cucumber.helper.NBTHelper;
 import com.blakebr0.cucumber.item.BaseItem;
 import com.blakebr0.pickletweaks.config.ModConfigs;
+import com.blakebr0.pickletweaks.init.ModDataComponents;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -21,28 +21,31 @@ import java.util.List;
 
 public class MagnetItem extends BaseItem {
 	public MagnetItem() {
-		super(p -> p.stacksTo(1));
+		super(p -> p
+				.stacksTo(1)
+				.component(ModDataComponents.MAGNET_ACTIVE, false)
+		);
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 		var stack = player.getItemInHand(hand);
+		var enabled = stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false);
 
-		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, NBTHelper.getBoolean(stack, "Enabled") ? 0.5F : 1.0F);
-
-		NBTHelper.flipBoolean(stack, "Enabled");
+		player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, enabled ? 0.5F : 1.0F);
+		stack.set(ModDataComponents.MAGNET_ACTIVE, !enabled);
 
 		return new InteractionResultHolder<>(InteractionResult.SUCCESS, stack);
 	}
 
 	@Override
 	public boolean isFoil(ItemStack stack) {
-		return NBTHelper.getBoolean(stack, "Enabled");
+		return stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false);
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag advanced) {
-		if (NBTHelper.getBoolean(stack, "Enabled")) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag advanced) {
+		if (stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false)) {
 			tooltip.add(ModTooltips.ENABLED.build());
 		} else {
 			tooltip.add(ModTooltips.DISABLED.build());
@@ -51,12 +54,14 @@ public class MagnetItem extends BaseItem {
 
 	@Override
 	public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean isSelected) {
-		if (entity instanceof Player && NBTHelper.getBoolean(stack, "Enabled")) {
+		var enabled = stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false);
+		if (entity instanceof Player && enabled) {
 			double range = ModConfigs.MAGNET_RANGE.get();
 			var items = level.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
 
 			for (var item : items) {
-				if (!item.isAlive() || NBTHelper.getBoolean(stack, "PreventRemoteMovement"))
+				// TODO: find tag equivalent of NBTHelper.getBoolean(stack, "PreventRemoteMovement")
+				if (!item.isAlive())
 					continue;
 
 				var thrower = item.getOwner();

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:flint_gear"
+    },
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:scythes"
+    }
+  ],
+  "pattern": [
+    "IIS",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:flint"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:flint_scythe"
+  }
+}

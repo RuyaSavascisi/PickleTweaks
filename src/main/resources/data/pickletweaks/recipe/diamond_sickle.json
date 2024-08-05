@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:sickles"
+    }
+  ],
+  "pattern": [
+    " I ",
+    "  I",
+    "SI "
+  ],
+  "key": {
+    "I": {
+      "tag": "c:gems/diamond"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:diamond_sickle"
+  }
+}

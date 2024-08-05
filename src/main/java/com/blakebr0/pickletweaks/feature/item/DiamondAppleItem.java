@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 
 public class DiamondAppleItem extends BaseItem {
-	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(6).saturationMod(1.5F).alwaysEat().build();
+	public static final FoodProperties FOOD = new FoodProperties.Builder().nutrition(6).saturationModifier(1.5F).alwaysEdible().build();
 
 	public DiamondAppleItem() {
 		super(p -> p.food(FOOD).rarity(Rarity.EPIC));
@@ -53,13 +53,13 @@ public class DiamondAppleItem extends BaseItem {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, Level level, List<Component> tooltip, TooltipFlag flag) {
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.getDisplayName(), "II").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.getDisplayName(), "III").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.value().getDisplayName(), "II").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.value().getDisplayName(), "III").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.value().getDisplayName(), "I").build());
+			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.value().getDisplayName(), "I").build());
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}

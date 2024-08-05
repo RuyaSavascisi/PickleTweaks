@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:colored_cobblestone"
+    }
+  ],
+  "pattern": [
+    "CCC",
+    "CDC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "tag": "c:cobblestones"
+    },
+    "D": {
+      "tag": "c:dyes/lime"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:lime_cobblestone",
+    "count": 8
+  }
+}

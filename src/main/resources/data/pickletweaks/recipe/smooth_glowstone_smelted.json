@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:smelting",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:smooth_glowstone"
+    }
+  ],
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "result": {
+    "id": "pickletweaks:smooth_glowstone"
+  },
+  "experience": 0.3,
+  "cookingtime": 200
+}

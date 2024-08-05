@@ -13,13 +13,14 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 public class NightVisionGogglesRenderLayer<T extends LivingEntity, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    private static final ResourceLocation TEXTURE_BASIC = new ResourceLocation(PickleTweaks.MOD_ID, "textures/models/armor/night_vision_goggles_layer_1.png");
-    private static final ResourceLocation TEXTURE_REINFORCED = new ResourceLocation(PickleTweaks.MOD_ID, "textures/models/armor/reinforced_night_vision_goggles_layer_1.png");
+    private static final ResourceLocation TEXTURE_BASIC = PickleTweaks.resource("textures/models/armor/night_vision_goggles_layer_1.png");
+    private static final ResourceLocation TEXTURE_REINFORCED = PickleTweaks.resource("textures/models/armor/reinforced_night_vision_goggles_layer_1.png");
 
     public NightVisionGogglesRenderLayer(RenderLayerParent<T, M> parent) {
         super(parent);
@@ -32,12 +33,12 @@ public class NightVisionGogglesRenderLayer<T extends LivingEntity, M extends Hum
             var texture = curio.is(ModItems.NIGHT_VISION_GOGGLES.get()) ? TEXTURE_BASIC : TEXTURE_REINFORCED;
 
             this.getParentModel().copyPropertiesTo((HumanoidModel<T>) model);
-            this.renderModel(matrix, buffer, lightness, curio.hasFoil(), model, 1.0F, 1.0F, 1.0F, texture);
+            this.renderModel(matrix, buffer, lightness, curio.hasFoil(), model, texture);
         });
     }
 
-    private void renderModel(PoseStack matrix, MultiBufferSource buffer, int lightness, boolean foil, Model model, float r, float g, float b, ResourceLocation armorResource) {
-        var vertex = ItemRenderer.getArmorFoilBuffer(buffer, RenderType.armorCutoutNoCull(armorResource), false, foil);
-        model.renderToBuffer(matrix, vertex, lightness, OverlayTexture.NO_OVERLAY, r, g, b, 1.0F);
+    private void renderModel(PoseStack matrix, MultiBufferSource buffer, int lightness, boolean foil, Model model, ResourceLocation armorResource) {
+        var vertex = ItemRenderer.getArmorFoilBuffer(buffer, RenderType.armorCutoutNoCull(armorResource), foil);
+        model.renderToBuffer(matrix, vertex, lightness, OverlayTexture.NO_OVERLAY, FastColor.ARGB32.color(255, 255, 255, 255));
     }
 }

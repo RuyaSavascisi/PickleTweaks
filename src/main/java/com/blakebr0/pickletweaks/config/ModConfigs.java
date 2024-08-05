@@ -1,23 +1,23 @@
 package com.blakebr0.pickletweaks.config;
 
 import com.google.common.collect.Lists;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModList;
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ModConfigs {
-    public static final ForgeConfigSpec CLIENT;
-    public static final ForgeConfigSpec COMMON;
+    public static final ModConfigSpec CLIENT;
+    public static final ModConfigSpec COMMON;
 
-    public static final ForgeConfigSpec.ConfigValue<List<String>> HARVEST_LEVEL_NAMES;
+    public static final ModConfigSpec.ConfigValue<List<String>> HARVEST_LEVEL_NAMES;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
+    public static final ModConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
 
     // Client
     static {
-        final var client = new ForgeConfigSpec.Builder();
+        final var client = new ModConfigSpec.Builder();
 
         client.comment("General configuration options").push("General");
         HARVEST_LEVEL_NAMES = client
@@ -34,42 +34,42 @@ public final class ModConfigs {
         CLIENT = client.build();
     }
 
-    public static final ForgeConfigSpec.DoubleValue MAGNET_RANGE;
-    public static final ForgeConfigSpec.BooleanValue FAKE_PLAYER_WATERING;
-    public static final ForgeConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
+    public static final ModConfigSpec.DoubleValue MAGNET_RANGE;
+    public static final ModConfigSpec.BooleanValue FAKE_PLAYER_WATERING;
+    public static final ModConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_SMOOTH_GLOWSTONE;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_COAL_PIECES;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_APPLES;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_WATERING_CAN;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_MESHES;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_MAGNET;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_NIGHT_VISION_GOGGLES;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_PAXELS;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_FLINT_GEAR;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_EMERALD_GEAR;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_RIGHT_CLICK_HARVEST;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_SICKLES;
-    public static final ForgeConfigSpec.BooleanValue ENABLE_SCYTHES;
+    public static final ModConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
+    public static final ModConfigSpec.BooleanValue ENABLE_SMOOTH_GLOWSTONE;
+    public static final ModConfigSpec.BooleanValue ENABLE_COAL_PIECES;
+    public static final ModConfigSpec.BooleanValue ENABLE_APPLES;
+    public static final ModConfigSpec.BooleanValue ENABLE_WATERING_CAN;
+    public static final ModConfigSpec.BooleanValue ENABLE_MESHES;
+    public static final ModConfigSpec.BooleanValue ENABLE_MAGNET;
+    public static final ModConfigSpec.BooleanValue ENABLE_NIGHT_VISION_GOGGLES;
+    public static final ModConfigSpec.BooleanValue ENABLE_PAXELS;
+    public static final ModConfigSpec.BooleanValue ENABLE_FLINT_GEAR;
+    public static final ModConfigSpec.BooleanValue ENABLE_EMERALD_GEAR;
+    public static final ModConfigSpec.BooleanValue ENABLE_RIGHT_CLICK_HARVEST;
+    public static final ModConfigSpec.BooleanValue ENABLE_SICKLES;
+    public static final ModConfigSpec.BooleanValue ENABLE_SCYTHES;
 
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_ENABLED;
-    public static final ForgeConfigSpec.IntValue GRID_REPAIR_COST;
-    public static final ForgeConfigSpec.IntValue GRID_REPAIR_ENCHANTMENT_COST;
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_STRIP_ENCHANTMENTS;
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_DISABLE_DEFAULTS;
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
-    public static final ForgeConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHEARS;
-    public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_BLACKLIST;
-    public static final ForgeConfigSpec.ConfigValue<List<String>> GRID_REPAIR_OVERRIDES;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_ENABLED;
+    public static final ModConfigSpec.IntValue GRID_REPAIR_COST;
+    public static final ModConfigSpec.IntValue GRID_REPAIR_ENCHANTMENT_COST;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_STRIP_ENCHANTMENTS;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_DISABLE_DEFAULTS;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_OVERRIDE_MODE;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHOVEL;
+    public static final ModConfigSpec.BooleanValue GRID_REPAIR_CHEAP_SHEARS;
+    public static final ModConfigSpec.ConfigValue<List<String>> GRID_REPAIR_BLACKLIST;
+    public static final ModConfigSpec.ConfigValue<List<String>> GRID_REPAIR_OVERRIDES;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
-    public static final ForgeConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
+    public static final ModConfigSpec.BooleanValue ENABLE_TOOL_BREAKING_TWEAK;
+    public static final ModConfigSpec.ConfigValue<List<String>> USELESS_TOOLS;
 
     // Common
     static {
-        final var common = new ForgeConfigSpec.Builder();
+        final var common = new ModConfigSpec.Builder();
 
         common.comment("General configuration options.").push("General");
         MAGNET_RANGE = common

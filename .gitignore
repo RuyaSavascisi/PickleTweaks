@@ -24,3 +24,5 @@ libs
 classes
 *.py
 logs
+runs
+run-data

@@ -3,14 +3,16 @@ package com.blakebr0.pickletweaks.feature;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 public final class FeatureBowInfo {
 	@SubscribeEvent
@@ -24,8 +26,10 @@ public final class FeatureBowInfo {
 
 		if (item instanceof ProjectileWeaponItem shootable) {
 			var player = event.getEntity();
+			var registries = event.getContext().registries();
+			var infinity = registries.lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.INFINITY);
 
-			if (EnchantmentHelper.getTagEnchantmentLevel(Enchantments.INFINITY_ARROWS, stack) > 0) {
+			if (EnchantmentHelper.getTagEnchantmentLevel(infinity, stack) > 0) {
 				while (tooltip.hasNext()) {
 					var line = tooltip.next();
 
@@ -33,7 +37,7 @@ public final class FeatureBowInfo {
 						var key = contents.getKey();
 
 						if ("enchantment.minecraft.infinity".equals(key)) {
-							var formatting = getAmmo(player, shootable) > 0 ? ChatFormatting.GREEN : ChatFormatting.RED;
+							var formatting = getAmmo(player, shootable, stack) > 0 ? ChatFormatting.GREEN : ChatFormatting.RED;
 
 							tooltip.set(Component.literal(line.getString()).withStyle(formatting));
 						}
@@ -42,26 +46,26 @@ public final class FeatureBowInfo {
 			} else {
 				tooltip.next();
 
-				var ammo = getAmmo(player, shootable);
+				var ammo = getAmmo(player, shootable, stack);
 
 				tooltip.add(ModTooltips.AMMO.args(ammo).build());
 			}
 		}
 	}
 
-	public static int getAmmo(Player player, ProjectileWeaponItem item) {
+	public static int getAmmo(Player player, ProjectileWeaponItem item, ItemStack stack) {
 		var ammo = 0;
 
 		if (player == null)
 			return ammo;
 
-		var offHand = player.getInventory().offhand.get(0);
-		if (item.getSupportedHeldProjectiles().test(offHand))
+		var offHand = player.getInventory().offhand.getFirst();
+		if (item.getSupportedHeldProjectiles(stack).test(offHand))
 			ammo += offHand.getCount();
 
-		for (var stack : player.getInventory().items) {
-			if (item.getSupportedHeldProjectiles().test(stack))
-				ammo += stack.getCount();
+		for (var inventoryStack : player.getInventory().items) {
+			if (item.getSupportedHeldProjectiles(stack).test(inventoryStack))
+				ammo += inventoryStack.getCount();
 		}
 
 		return ammo;

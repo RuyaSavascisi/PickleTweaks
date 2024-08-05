@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:meshes"
+    }
+  ],
+  "ingredients": [
+    [
+      {
+        "item": "minecraft:short_grass"
+      },
+      {
+        "item": "minecraft:tall_grass"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:short_grass"
+      },
+      {
+        "item": "minecraft:tall_grass"
+      }
+    ],
+    [
+      {
+        "item": "minecraft:short_grass"
+      },
+      {
+        "item": "minecraft:tall_grass"
+      }
+    ]
+  ],
+  "result": {
+    "id": "pickletweaks:grass_fiber"
+  }
+}

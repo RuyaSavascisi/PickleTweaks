@@ -13,16 +13,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public final class FeatureRightClickHarvest {
 	@SubscribeEvent
-	public void onRightClickCrop(RightClickBlock event) {
+	public void onRightClickCrop(PlayerInteractEvent.RightClickBlock event) {
 		if (!ModConfigs.ENABLE_RIGHT_CLICK_HARVEST.get())
-			return;
-
-		if (event.getEntity() == null)
 			return;
 
 		if (event.getHand() != InteractionHand.MAIN_HAND)

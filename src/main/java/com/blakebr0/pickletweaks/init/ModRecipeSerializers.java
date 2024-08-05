@@ -2,19 +2,13 @@ package com.blakebr0.pickletweaks.init;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairRecipe;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-
-import java.util.function.Supplier;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class ModRecipeSerializers {
-	public static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, PickleTweaks.MOD_ID);
+	public static final DeferredRegister<RecipeSerializer<?>> REGISTRY = DeferredRegister.create(Registries.RECIPE_SERIALIZER, PickleTweaks.MOD_ID);
 
-	public static final RegistryObject<RecipeSerializer<?>> CRAFTING_GRID_REPAIR = register("grid_repair", GridRepairRecipe.Serializer::new);
-
-	private static RegistryObject<RecipeSerializer<?>> register(String name, Supplier<RecipeSerializer<?>> serializer) {
-		return REGISTRY.register(name, serializer);
-	}
+	public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<?>> CRAFTING_GRID_REPAIR = REGISTRY.register("grid_repair", GridRepairRecipe.Serializer::new);
 }

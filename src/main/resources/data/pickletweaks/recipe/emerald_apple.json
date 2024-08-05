@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:apples"
+    }
+  ],
+  "pattern": [
+    "EEE",
+    "EAE",
+    "EEE"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:apple"
+    },
+    "E": {
+      "tag": "c:gems/emerald"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:emerald_apple"
+  }
+}

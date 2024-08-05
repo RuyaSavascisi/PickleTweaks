@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:emerald_gear"
+    },
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:scythes"
+    }
+  ],
+  "pattern": [
+    "IIS",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "I": {
+      "tag": "c:gems/emerald"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:emerald_scythe"
+  }
+}

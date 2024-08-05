@@ -5,16 +5,17 @@ import com.blakebr0.pickletweaks.feature.client.ModelHandler;
 import com.blakebr0.pickletweaks.feature.client.model.NightVisionGogglesModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 
 public class NightVisionGogglesItem extends BaseArmorItem {
-	public NightVisionGogglesItem(ArmorMaterial material) {
+	public NightVisionGogglesItem(Holder<ArmorMaterial> material) {
 		super(material, Type.HELMET);
 	}
 

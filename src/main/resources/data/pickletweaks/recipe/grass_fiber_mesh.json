@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:meshes"
+    }
+  ],
+  "pattern": [
+    "ISI",
+    "SSS",
+    "ISI"
+  ],
+  "key": {
+    "I": {
+      "tag": "c:rods/wooden"
+    },
+    "S": {
+      "item": "pickletweaks:grass_fiber"
+    }
+  },
+  "result": {
+    "id": "pickletweaks:grass_fiber_mesh"
+  }
+}

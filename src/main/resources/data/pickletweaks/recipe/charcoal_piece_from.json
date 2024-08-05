@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "neoforge:conditions": [
+    {
+      "type": "cucumber:feature_flag",
+      "flag": "pickletweaks:coal_pieces"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:charcoal"
+    }
+  ],
+  "result": {
+    "id": "pickletweaks:charcoal_piece",
+    "count": 8
+  }
+}

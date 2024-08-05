@@ -1,0 +1,36 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+    issueTrackerURL="https://github.com/BlakeBr0/PickleTweaks/issues"
+    modId="pickletweaks"
+    version="${mod_version}"
+    displayName="Pickle Tweaks"
+    # updateJSONURL="http://myurl.me/"
+    displayURL="https://blakesmods.com/pickle-tweaks"
+    # logoFile="examplemod.png"
+    credits="Cavemanrockx"
+    authors="BlakeBr0"
+    description='''
+    A bunch of vanilla+ features and tweaks.
+    '''
+
+    [[dependencies.pickletweaks]]
+        modId="neoforge"
+        mandatory=true
+        versionRange="[21.0.0-beta,)"
+        ordering="NONE"
+        side="BOTH"
+    [[dependencies.pickletweaks]]
+        modId="minecraft"
+        mandatory=true
+        versionRange="[1.21,1.21.1)"
+        ordering="NONE"
+        side="BOTH"
+    [[dependencies.pickletweaks]]
+        modId="cucumber"
+        mandatory=true
+        versionRange="[7.0.5,)"
+        ordering="NONE"
+        side="BOTH"

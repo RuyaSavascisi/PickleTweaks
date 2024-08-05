@@ -14,13 +14,11 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TieredItem;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 public final class TweakToolUselessifier {
 	@SubscribeEvent
@@ -39,7 +37,7 @@ public final class TweakToolUselessifier {
 	}
 
 	@SubscribeEvent
-	public void onLivingHurt(LivingHurtEvent event) {
+	public void onLivingHurt(LivingIncomingDamageEvent event) {
         var source = event.getSource();
         if (!(source.getMsgId().equals("player")))
 			return;
@@ -59,8 +57,6 @@ public final class TweakToolUselessifier {
 			event.setCanceled(true);
 		}
 	}
-
-
 
 	@SubscribeEvent
 	public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -122,7 +118,6 @@ public final class TweakToolUselessifier {
 		}
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	@SubscribeEvent
 	public void onItemTooltip(ItemTooltipEvent event) {
 		var item = event.getItemStack().getItem();

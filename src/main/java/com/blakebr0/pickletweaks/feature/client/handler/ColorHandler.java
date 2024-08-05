@@ -2,8 +2,8 @@ package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.cucumber.iface.IColored;
 import com.blakebr0.pickletweaks.init.ModBlocks;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 public final class ColorHandler {
     @SubscribeEvent
