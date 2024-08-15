@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.network.payload;
 
 import com.blakebr0.pickletweaks.PickleTweaks;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
-import com.blakebr0.pickletweaks.init.ModDataComponents;
+import com.blakebr0.pickletweaks.init.ModDataComponentTypes;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -30,9 +30,9 @@ public record ToggleMagnetPayload(int slot) implements CustomPacketPayload {
             var item = stack.getItem();
 
             if (item instanceof MagnetItem) {
-                var enabled = stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false);
+                var enabled = stack.getOrDefault(ModDataComponentTypes.MAGNET_ACTIVE, false);
 
-                stack.set(ModDataComponents.MAGNET_ACTIVE, !enabled);
+                stack.set(ModDataComponentTypes.MAGNET_ACTIVE, !enabled);
             }
         });
     }

@@ -13,7 +13,7 @@ import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
 import com.blakebr0.pickletweaks.init.ModArmorMaterials;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModCreativeModeTabs;
-import com.blakebr0.pickletweaks.init.ModDataComponents;
+import com.blakebr0.pickletweaks.init.ModDataComponentTypes;
 import com.blakebr0.pickletweaks.init.ModItems;
 import com.blakebr0.pickletweaks.init.ModRecipeSerializers;
 import com.blakebr0.pickletweaks.network.NetworkHandler;
@@ -45,7 +45,7 @@ public final class PickleTweaks {
 
 		ModBlocks.REGISTRY.register(bus);
 		ModArmorMaterials.REGISTRY.register(bus);
-		ModDataComponents.REGISTRY.register(bus);
+		ModDataComponentTypes.REGISTRY.register(bus);
 		ModItems.REGISTRY.register(bus);
 		ModCreativeModeTabs.REGISTRY.register(bus);
 		ModRecipeSerializers.REGISTRY.register(bus);

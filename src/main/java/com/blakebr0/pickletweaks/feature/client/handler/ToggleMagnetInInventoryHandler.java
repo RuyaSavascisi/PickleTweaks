@@ -2,7 +2,7 @@ package com.blakebr0.pickletweaks.feature.client.handler;
 
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.item.MagnetItem;
-import com.blakebr0.pickletweaks.init.ModDataComponents;
+import com.blakebr0.pickletweaks.init.ModDataComponentTypes;
 import com.blakebr0.pickletweaks.network.payload.ToggleMagnetPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -32,7 +32,7 @@ public final class ToggleMagnetInInventoryHandler {
                 if (stack.getItem() instanceof MagnetItem) {
                     PacketDistributor.sendToServer(new ToggleMagnetPayload(slot.index));
 
-                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, stack.getOrDefault(ModDataComponents.MAGNET_ACTIVE, false) ? 0.5F : 1.0F);
+                    player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.5F, stack.getOrDefault(ModDataComponentTypes.MAGNET_ACTIVE, false) ? 0.5F : 1.0F);
 
                     event.setCanceled(true);
                 }
