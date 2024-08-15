@@ -1,6 +1,5 @@
 package com.blakebr0.pickletweaks;
 
-import com.blakebr0.cucumber.helper.ConfigHelper;
 import com.blakebr0.pickletweaks.compat.curios.CuriosCompat;
 import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
@@ -59,9 +58,7 @@ public final class PickleTweaks {
 		}
 
 		mod.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
-		mod.registerConfig(ModConfig.Type.COMMON, ModConfigs.COMMON);
-
-		ConfigHelper.load(ModConfigs.COMMON, "pickletweaks-common.toml");
+		mod.registerConfig(ModConfig.Type.STARTUP, ModConfigs.COMMON, "pickletweaks-common.toml");
 	}
 
 	@SubscribeEvent
