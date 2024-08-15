@@ -8,6 +8,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -136,13 +137,13 @@ public class GridRepairOverrides {
 					return null;
 				}
 
-				var item = BuiltInRegistries.ITEM.getOptional(id);
-				if (item.isEmpty()) {
+				var item = BuiltInRegistries.ITEM.get(id);
+				if (item != Items.AIR) {
 					PickleTweaks.LOGGER.error("Invalid repair material item is null: {}", value);
 					return null;
 				}
 
-				return OverrideIngredient.item(item.get());
+				return OverrideIngredient.item(item);
 			} else {
 				PickleTweaks.LOGGER.error("Invalid repair material syntax: {}", value);
 			}
