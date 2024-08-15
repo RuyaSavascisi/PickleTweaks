@@ -1,7 +1,6 @@
 package com.blakebr0.pickletweaks.feature.item;
 
 import com.blakebr0.cucumber.item.BaseItem;
-import com.blakebr0.cucumber.lib.Colors;
 import com.blakebr0.cucumber.lib.Tooltips;
 import com.blakebr0.pickletweaks.lib.ModTooltips;
 import net.minecraft.client.gui.screens.Screen;
@@ -61,13 +60,21 @@ public class EmeraldAppleItem extends BaseItem {
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
 		if (Screen.hasShiftDown()) {
 			tooltip.add(ModTooltips.GIVES_BUFFS.build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_BOOST.value().getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.REGENERATION.value().getDisplayName(), "III").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.ABSORPTION.value().getDisplayName(), "IV").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.FIRE_RESISTANCE.value().getDisplayName(), "I").build());
-			tooltip.add(ModTooltips.BUFF_LIST_ITEM.args(Colors.WHITE, MobEffects.DAMAGE_RESISTANCE.value().getDisplayName(), "II").build());
+			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.DAMAGE_BOOST, "I", getDuration(4800)));
+			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.REGENERATION, "III", getDuration(400)));
+			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.ABSORPTION, "IV", getDuration(4800)));
+			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.FIRE_RESISTANCE, "I", getDuration(4800)));
+			tooltip.add(ModTooltips.createMobEffectLine(MobEffects.DAMAGE_RESISTANCE, "II", getDuration(4800)));
 		} else {
 			tooltip.add(Tooltips.HOLD_SHIFT_FOR_INFO.build());
 		}
+	}
+
+	private static String getDuration(int ticks) {
+		int duration = ticks / 20;
+		var minutes = Math.floorDiv(duration, 60);
+		var seconds = String.format("%02d", duration % 60);
+
+		return minutes + ":" + seconds;
 	}
 }

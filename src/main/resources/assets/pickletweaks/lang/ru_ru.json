@@ -83,7 +83,6 @@
   "item.pickletweaks.netherite_scythe": "Незеритовая коса",
 
   "tooltip.pickletweaks.gives_buffs": "Накладывает эффекты",
-  "tooltip.pickletweaks.buff_list_item": " - %s%s %s",
   "tooltip.pickletweaks.disabled": "Выключен",
   "tooltip.pickletweaks.enabled": "Включен",
   "tooltip.pickletweaks.mining_level": "Уровень копания: %s",
