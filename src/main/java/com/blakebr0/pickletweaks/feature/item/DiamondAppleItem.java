@@ -37,17 +37,17 @@ public class DiamondAppleItem extends BaseItem {
 		potion = entity.getEffect(MobEffects.ABSORPTION);
 		if (potion != null && potion.getAmplifier() >= 2)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration + 5000, 2));
+		entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration + 4800, 2));
 
 		potion = entity.getEffect(MobEffects.FIRE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 4800, 0));
 
 		potion = entity.getEffect(MobEffects.DAMAGE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 4800, 0));
 
 		return entity.eat(level, stack);
 	}

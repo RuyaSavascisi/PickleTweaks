@@ -32,7 +32,7 @@ public class EmeraldAppleItem extends BaseItem {
 		potion = entity.getEffect(MobEffects.DAMAGE_BOOST);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration + 4800, 0));
 
 		potion = entity.getEffect(MobEffects.REGENERATION);
 		if (potion != null && potion.getAmplifier() >= 2)
@@ -42,17 +42,17 @@ public class EmeraldAppleItem extends BaseItem {
 		potion = entity.getEffect(MobEffects.ABSORPTION);
 		if (potion != null && potion.getAmplifier() >= 4)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration + 5000, 4));
+		entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, duration + 4800, 4));
 
 		potion = entity.getEffect(MobEffects.FIRE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 0)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 5000, 0));
+		entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration + 4800, 0));
 
 		potion = entity.getEffect(MobEffects.DAMAGE_RESISTANCE);
 		if (potion != null && potion.getAmplifier() >= 1)
 			duration = potion.getDuration();
-		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 5000, 1));
+		entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration + 4800, 1));
 
 		return entity.eat(level, stack);
 	}
