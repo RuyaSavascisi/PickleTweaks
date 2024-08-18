@@ -5,6 +5,7 @@ import com.blakebr0.pickletweaks.config.ModConfigs;
 import com.blakebr0.pickletweaks.feature.FeatureBowInfo;
 import com.blakebr0.pickletweaks.feature.FeatureRightClickHarvest;
 import com.blakebr0.pickletweaks.feature.FeatureToolInfo;
+import com.blakebr0.pickletweaks.feature.client.ModClientExtensions;
 import com.blakebr0.pickletweaks.feature.client.ModelHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
@@ -55,6 +56,7 @@ public final class PickleTweaks {
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			bus.register(new ColorHandler());
 			bus.register(new ModelHandler());
+			bus.register(new ModClientExtensions());
 		}
 
 		mod.registerConfig(ModConfig.Type.CLIENT, ModConfigs.CLIENT);
