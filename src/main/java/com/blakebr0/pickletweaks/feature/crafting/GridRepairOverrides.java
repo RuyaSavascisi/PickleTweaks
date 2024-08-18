@@ -138,7 +138,7 @@ public class GridRepairOverrides {
 				}
 
 				var item = BuiltInRegistries.ITEM.get(id);
-				if (item != Items.AIR) {
+				if (item == Items.AIR) {
 					PickleTweaks.LOGGER.error("Invalid repair material item is null: {}", value);
 					return null;
 				}
