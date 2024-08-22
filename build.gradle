@@ -22,7 +22,7 @@ boolean isWorkspace = findProject(':Cucumber') != null
 repositories {
     maven { url 'https://maven.blakesmods.com' }
     maven { url 'https://maven.blamejared.com' }
-    maven { url 'https://maven.theillusivec4.top/' }
+    maven { url 'https://maven.octo-studios.com/releases' }
     maven {
         url 'https://cursemaven.com'
         content {
@@ -91,9 +91,9 @@ dependencies {
         implementation "com.blakebr0.cucumber:Cucumber:${cucumber_version}"
     }
 
-    compileOnly "top.theillusivec4.curios:curios-forge:${curios_version}:api"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 
-    // runtimeOnly "top.theillusivec4.curios:curios-forge:${curios_version}"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
     runtimeOnly "curse.maven:jade-324717:${jade_version}"
     runtimeOnly "mezz.jei:jei-${jei_version}"
 }

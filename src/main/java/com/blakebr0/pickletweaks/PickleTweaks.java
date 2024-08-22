@@ -11,6 +11,7 @@ import com.blakebr0.pickletweaks.feature.client.handler.ColorHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.NightVisionGogglesHandler;
 import com.blakebr0.pickletweaks.feature.client.handler.ToggleMagnetInInventoryHandler;
 import com.blakebr0.pickletweaks.feature.crafting.GridRepairOverrides;
+import com.blakebr0.pickletweaks.handler.RegisterCapabilityHandler;
 import com.blakebr0.pickletweaks.init.ModArmorMaterials;
 import com.blakebr0.pickletweaks.init.ModBlocks;
 import com.blakebr0.pickletweaks.init.ModCreativeModeTabs;
@@ -29,7 +30,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
@@ -52,6 +52,7 @@ public final class PickleTweaks {
 		ModRecipeSerializers.REGISTRY.register(bus);
 
 		bus.register(new NetworkHandler());
+		bus.register(new RegisterCapabilityHandler());
 
 		if (FMLEnvironment.dist == Dist.CLIENT) {
 			bus.register(new ColorHandler());
@@ -84,13 +85,6 @@ public final class PickleTweaks {
 		NeoForge.EVENT_BUS.register(new ToggleMagnetInInventoryHandler());
 		NeoForge.EVENT_BUS.register(new FeatureToolInfo());
 		NeoForge.EVENT_BUS.register(new FeatureBowInfo());
-	}
-
-	@SubscribeEvent
-	public void onInterModEnqueue(InterModEnqueueEvent event) {
-		if (ModConfigs.isCuriosInstalled()) {
-			CuriosCompat.onInterModEnqueue(event);
-		}
 	}
 
 	public static ResourceLocation resource(String path) {
