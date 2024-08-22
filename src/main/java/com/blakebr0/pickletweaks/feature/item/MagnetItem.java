@@ -60,8 +60,7 @@ public class MagnetItem extends BaseItem {
 			var items = level.getEntitiesOfClass(ItemEntity.class, entity.getBoundingBox().inflate(range));
 
 			for (var item : items) {
-				// TODO: find tag equivalent of NBTHelper.getBoolean(stack, "PreventRemoteMovement")
-				if (!item.isAlive())
+				if (!item.isAlive() || item.getPersistentData().contains("PreventRemoteMovement"))
 					continue;
 
 				var thrower = item.getOwner();
