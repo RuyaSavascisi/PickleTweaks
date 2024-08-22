@@ -5,7 +5,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorMaterial;
 
 public class NightVisionGogglesItem extends BaseArmorItem {
-	public NightVisionGogglesItem(Holder<ArmorMaterial> material) {
-		super(material, Type.HELMET);
+	public NightVisionGogglesItem(Holder<ArmorMaterial> material, int maxDamageFactor) {
+		super(material, Type.HELMET, maxDamageFactor);
 	}
 }

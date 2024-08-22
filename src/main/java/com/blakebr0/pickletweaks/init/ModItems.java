@@ -46,8 +46,8 @@ public final class ModItems {
 	public static final DeferredHolder<Item, Item> MESH = REGISTRY.register("mesh", () -> new BaseReusableItem(64));
 	public static final DeferredHolder<Item, Item> REINFORCED_MESH = REGISTRY.register("reinforced_mesh", () -> new BaseReusableItem(512));
 	public static final DeferredHolder<Item, Item> MAGNET = REGISTRY.register("magnet", MagnetItem::new);
-	public static final DeferredHolder<Item, Item> NIGHT_VISION_GOGGLES = REGISTRY.register("night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterials.NIGHT_VISION_GOGGLES));
-	public static final DeferredHolder<Item, Item> REINFORCED_NIGHT_VISION_GOGGLES = REGISTRY.register("reinforced_night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterials.REINFORCED_NIGHT_VISION_GOGGLES));
+	public static final DeferredHolder<Item, Item> NIGHT_VISION_GOGGLES = REGISTRY.register("night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterials.NIGHT_VISION_GOGGLES, 15));
+	public static final DeferredHolder<Item, Item> REINFORCED_NIGHT_VISION_GOGGLES = REGISTRY.register("reinforced_night_vision_goggles", () -> new NightVisionGogglesItem(ModArmorMaterials.REINFORCED_NIGHT_VISION_GOGGLES, 30));
 
 	public static final DeferredHolder<Item, Item> FLINT_SWORD = REGISTRY.register("flint_sword", () -> new BaseSwordItem(ModItemTier.FLINT));
 	public static final DeferredHolder<Item, Item> FLINT_PICKAXE = REGISTRY.register("flint_pickaxe", () -> new BasePickaxeItem(ModItemTier.FLINT));
@@ -62,14 +62,14 @@ public final class ModItems {
 	public static final DeferredHolder<Item, Item> EMERALD_AXE = REGISTRY.register("emerald_axe", () -> new BaseAxeItem(ModItemTier.EMERALD));
 	public static final DeferredHolder<Item, Item> EMERALD_HOE = REGISTRY.register("emerald_hoe", () -> new BaseHoeItem(ModItemTier.EMERALD));
 
-	public static final DeferredHolder<Item, Item> FLINT_HELMET = REGISTRY.register("flint_helmet", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.HELMET));
-	public static final DeferredHolder<Item, Item> FLINT_CHESTPLATE = REGISTRY.register("flint_chestplate", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.CHESTPLATE));
-	public static final DeferredHolder<Item, Item> FLINT_LEGGINGS = REGISTRY.register("flint_leggings", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.LEGGINGS));
-	public static final DeferredHolder<Item, Item> FLINT_BOOTS = REGISTRY.register("flint_boots", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.BOOTS));
-	public static final DeferredHolder<Item, Item> EMERALD_HELMET = REGISTRY.register("emerald_helmet", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.HELMET));
-	public static final DeferredHolder<Item, Item> EMERALD_CHESTPLATE = REGISTRY.register("emerald_chestplate", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.CHESTPLATE));
-	public static final DeferredHolder<Item, Item> EMERALD_LEGGINGS = REGISTRY.register("emerald_leggings", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.LEGGINGS));
-	public static final DeferredHolder<Item, Item> EMERALD_BOOTS = REGISTRY.register("emerald_boots", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.BOOTS));
+	public static final DeferredHolder<Item, Item> FLINT_HELMET = REGISTRY.register("flint_helmet", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.HELMET, 15));
+	public static final DeferredHolder<Item, Item> FLINT_CHESTPLATE = REGISTRY.register("flint_chestplate", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.CHESTPLATE, 15));
+	public static final DeferredHolder<Item, Item> FLINT_LEGGINGS = REGISTRY.register("flint_leggings", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.LEGGINGS, 15));
+	public static final DeferredHolder<Item, Item> FLINT_BOOTS = REGISTRY.register("flint_boots", () -> new BaseArmorItem(ModArmorMaterials.FLINT, ArmorItem.Type.BOOTS, 15));
+	public static final DeferredHolder<Item, Item> EMERALD_HELMET = REGISTRY.register("emerald_helmet", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.HELMET, 27));
+	public static final DeferredHolder<Item, Item> EMERALD_CHESTPLATE = REGISTRY.register("emerald_chestplate", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.CHESTPLATE, 27));
+	public static final DeferredHolder<Item, Item> EMERALD_LEGGINGS = REGISTRY.register("emerald_leggings", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.LEGGINGS, 27));
+	public static final DeferredHolder<Item, Item> EMERALD_BOOTS = REGISTRY.register("emerald_boots", () -> new BaseArmorItem(ModArmorMaterials.EMERALD, ArmorItem.Type.BOOTS, 27));
 
 	public static final DeferredHolder<Item, Item> WOODEN_PAXEL = REGISTRY.register("wooden_paxel", () -> new BasePaxelItem(Tiers.WOOD));
 	public static final DeferredHolder<Item, Item> STONE_PAXEL = REGISTRY.register("stone_paxel", () -> new BasePaxelItem(Tiers.STONE));
