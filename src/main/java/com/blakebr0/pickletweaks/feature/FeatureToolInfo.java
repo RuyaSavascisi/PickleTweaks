@@ -24,17 +24,8 @@ public final class FeatureToolInfo {
 
 			tooltip.next();
 
-			tooltip.add(ModTooltips.MINING_LEVEL.args(getMiningLevel(tool)).build());
 			tooltip.add(ModTooltips.MINING_SPEED.args(getMiningSpeed(tool)).build());
 		}
-	}
-
-	private static String getMiningLevel(DiggerItem item) {
-//		var lvl = item.getTier().getLevel();
-		var names = ModConfigs.HARVEST_LEVEL_NAMES.get();
-
-		return ":("; // TODO: 1.21 is this even possible anymore?
-//		return lvl >= 0 && lvl < names.size() ? names.get(lvl) : String.valueOf(lvl);
 	}
 
 	private static float getMiningSpeed(DiggerItem item) {

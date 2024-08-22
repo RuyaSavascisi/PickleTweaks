@@ -11,18 +11,23 @@ public final class ModConfigs {
     public static final ModConfigSpec CLIENT;
     public static final ModConfigSpec COMMON;
 
-    public static final ModConfigSpec.ConfigValue<List<String>> HARVEST_LEVEL_NAMES;
-
     public static final ModConfigSpec.BooleanValue ENABLE_TOOL_INFO_TOOLTIP;
+    public static final ModConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
 
     // Client
     static {
         final var client = new ModConfigSpec.Builder();
 
         client.comment("General configuration options").push("General");
-        HARVEST_LEVEL_NAMES = client
-                .comment("The harvest level names used by the Tool Info Tweak tooltips.")
-                .define("harvestLevelNames", Lists.newArrayList("Stone", "Iron", "Diamond", "Obsidian", "Netherite"));
+        TOOL_INFO_TOOLTIP_BLACKLIST = client
+                .comment("""
+                        Here you can specify a list of tools that shouldn't have tool info tooltips.
+                        Ex. ["minecraft:iron_pickaxe", "minecraft:iron_axe"]
+                        You can use tags for tools by doing tag:<tag-id>.
+                        Ex: ["tag:minecraft:tools"]
+                        You can also blacklist entire mods by doing <mod-id>:*
+                        Ex. ["pickletweaks:*"]""")
+                .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
         client.pop();
 
         client.comment("Disable features.").push("Features");
@@ -36,7 +41,6 @@ public final class ModConfigs {
 
     public static final ModConfigSpec.DoubleValue MAGNET_RANGE;
     public static final ModConfigSpec.BooleanValue FAKE_PLAYER_WATERING;
-    public static final ModConfigSpec.ConfigValue<List<String>> TOOL_INFO_TOOLTIP_BLACKLIST;
 
     public static final ModConfigSpec.BooleanValue ENABLE_COLORED_COBBLESTONE;
     public static final ModConfigSpec.BooleanValue ENABLE_SMOOTH_GLOWSTONE;
@@ -78,15 +82,6 @@ public final class ModConfigs {
         FAKE_PLAYER_WATERING = common
                 .comment("Should fake players be able to use watering cans?")
                 .define("fakePlayerWatering", true);
-        TOOL_INFO_TOOLTIP_BLACKLIST = common
-                .comment("""
-                        Here you can specify a list of tools that shouldn't have tool info tooltips.
-                        Ex. ["minecraft:iron_pickaxe", "minecraft:iron_axe"]
-                        You can use tags for tools by doing tag:<tag-id>.
-                        Ex: ["tag:minecraft:tools"]
-                        You can also blacklist entire mods by doing <mod-id>:*
-                        Ex. ["pickletweaks:*"]""")
-                .define("toolInfoTooltipBlacklist", Lists.newArrayList("silentgear:*"));
         common.pop();
 
         common.comment("Disable specific features.").push("Features");
