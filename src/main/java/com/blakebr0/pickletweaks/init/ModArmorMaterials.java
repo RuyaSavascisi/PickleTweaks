@@ -28,8 +28,7 @@ public final class ModArmorMaterials {
             12, SoundEvents.ARMOR_EQUIP_CHAIN,
             () -> Ingredient.of(Items.FLINT),
             List.of(
-                    new ArmorMaterial.Layer(PickleTweaks.resource("flint"), "", true),
-                    new ArmorMaterial.Layer(PickleTweaks.resource("flint"), "_overlay", false)
+                    new ArmorMaterial.Layer(PickleTweaks.resource("flint"), "", false)
             ),
             0.0F, 0.0F
     ));
@@ -43,8 +42,7 @@ public final class ModArmorMaterials {
             12, SoundEvents.ARMOR_EQUIP_LEATHER,
             () -> Ingredient.of(Tags.Items.INGOTS_IRON),
             List.of(
-                    new ArmorMaterial.Layer(PickleTweaks.resource("night_vision_goggles"), "", true),
-                    new ArmorMaterial.Layer(PickleTweaks.resource("night_vision_goggles"), "_overlay", false)
+                    new ArmorMaterial.Layer(PickleTweaks.resource("emerald"), "", false)
             ),
             2.0F, 0.0F
     ));
@@ -55,7 +53,7 @@ public final class ModArmorMaterials {
             9, SoundEvents.ARMOR_EQUIP_IRON,
             () -> Ingredient.of(Tags.Items.INGOTS_IRON),
             List.of(
-                    new ArmorMaterial.Layer(PickleTweaks.resource("night_vision_goggles"), "", true)
+                    new ArmorMaterial.Layer(PickleTweaks.resource("night_vision_goggles"), "", false)
             ),
             0.0F, 0.0F
     ));
@@ -66,7 +64,7 @@ public final class ModArmorMaterials {
             9, SoundEvents.ARMOR_EQUIP_IRON,
             () -> Ingredient.of(Tags.Items.GEMS_DIAMOND),
             List.of(
-                    new ArmorMaterial.Layer(PickleTweaks.resource("reinforced_night_vision_goggles"), "", true)
+                    new ArmorMaterial.Layer(PickleTweaks.resource("reinforced_night_vision_goggles"), "", false)
             ),
             0.5F, 0.0F
     ));
