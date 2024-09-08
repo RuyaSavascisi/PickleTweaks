@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "pickletweaks:grass_fiber_mesh",
+    "pickletweaks:mesh",
+    "pickletweaks:reinforced_mesh"
+  ]
+}
